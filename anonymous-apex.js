@@ -54,14 +54,6 @@ const options = {
 
 require('./')
   .execute(options, apex, data)
-  .then((results) => {
-    if (!results.compiled || !results.success) {
-      console.error('APEX', apex);
-      console.error('DATA', data);
-      console.error('ERROR', results);
-      process.exit(13);
-    }
-  })
   .catch((error) => {
     console.error(error, error.stack);
     process.exit(13);

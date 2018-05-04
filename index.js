@@ -39,16 +39,6 @@ class ApexAnonymous {
   // data is optional. if provided we use the EJS template language to
   // template out the apex code. http://www.ejs.co
   //
-  // Results look as follows. You will likely want to make sure that both
-  // compiled and success are true.
-  //
-  // { line: -1,
-  //   column: -1,
-  //   compiled: true,
-  //   success: true,
-  //   compileProblem: null,
-  //   exceptionStackTrace: null,
-  //   exceptionMessage: null }
   async execute(apex, data) {
     if (isDebug) console.error('\nexecute apex:', apex, 'data:', data);
     await this._login();
@@ -60,6 +50,18 @@ class ApexAnonymous {
     const results = await promisify(this.connection.tooling.executeAnonymous)
       .bind(this.connection.tooling)(apex);
     if (isDebug) console.error('\nresults:', results);
+    // Results look as follows.
+    //
+    // { line: -1,
+    //   column: -1,
+    //   compiled: true,
+    //   success: true,
+    //   compileProblem: null,
+    //   exceptionStackTrace: null,
+    //   exceptionMessage: null }
+    if (!results.compiled || !results.success) {
+      throw new Error(JSON.stringify(results));
+    }
     return results;
   }
 }

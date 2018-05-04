@@ -11,48 +11,14 @@ http://www.ejs.co
 ## Install
 
 ```bash
-# Install globally for command line usage.
-npm i -g anonymous-apex
-
 # Install locally for Node.js module usage.
 npm i anonymous-apex
+
+# Install globally for command line usage.
+npm i -g anonymous-apex
 ```
 
 ## Enjoy
-
-### Commmand Line
-
-You can run `anonymous-apex` from the command line.
-
-```bash
-anonymous-apex < my-code.apex
-
-# or with template data.
-anonymous-apex template-data.json < my-code.apex
-```
-
-```
-Usage: anonymous-apex APEX [TEMPLATE_DATA]
-
-  APEX (required) is the path to a file containing your Apex code
-    OR just a string of Apex code.
-
-  TEMPLATE_DATA (optional) is the path to a file containing
-    JSON data to apply to your APEX code template.
-
-  We will use the following environment variables.
-
-  ANONYMOUS_APEX_USERNAME
-  ANONYMOUS_APEX_PASSWORD
-
-  Password needs to be your Salesforce password with the security
-  token appended.
-
-  You can set the NODE_DEBUG environment variable if you want us
-  to be chatty (INDLUDING USERNAME and PASSWORD info)!!!
-
-  NODE_DEBUG=ANONYMOUS_APEX anonymous-apex APEX [TEMPLATE_DATA]
-```
 
 ### Node Module
 
@@ -76,8 +42,9 @@ const options = {
 require('anonymous-apex').execute(options, apex, data)
   .then((results) => {
     console.error('\ndone', results);
-    // Results look as follows. You will likely want to make sure that both
-    // compiled and success are true.
+    // Results look as follows. If compiled or success are false, you
+    // won't get here, an error will be thrown, and you will end up in
+    // the catch block below.
     //
     // { line: -1,
     //   column: -1,
@@ -91,5 +58,39 @@ require('anonymous-apex').execute(options, apex, data)
     console.error(error);
     process.exit(13);
   });
+```
+
+### Commmand Line
+
+You can run `anonymous-apex` from the command line.
+
+```bash
+anonymous-apex my-code.apex
+
+# or with template data.
+anonymous-apex my-code.apex template-data.json
+```
+
+```
+Usage: anonymous-apex APEX [TEMPLATE_DATA]
+
+  APEX (required) is the path to a file containing your Apex code
+    OR just a string of Apex code.
+
+  TEMPLATE_DATA (optional) is the path to a file containing
+    JSON data to apply to your APEX code template.
+
+  We will use the following environment variables.
+
+  ANONYMOUS_APEX_USERNAME
+  ANONYMOUS_APEX_PASSWORD
+
+  Password needs to be your Salesforce password with the security
+  token appended.
+
+  You can set the NODE_DEBUG environment variable if you want us
+  to be chatty (INDLUDING USERNAME and PASSWORD info)!!!
+
+  NODE_DEBUG=ANONYMOUS_APEX anonymous-apex APEX [TEMPLATE_DATA]
 ```
 

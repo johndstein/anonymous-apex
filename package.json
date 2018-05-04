@@ -1,0 +1,26 @@
+{
+  "name": "anonymous-apex",
+  "version": "0.0.0",
+  "description": "Easily run anonymous Salesforce Apex code with Node.js or on the command line.",
+  "main": "index.js",
+  "bin": {
+    "anonymous-apex": "./anonymous-apex.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johndstein/anonymous-apex.git"
+  },
+  "author": "John Stein",
+  "license": "UNLICENSE",
+  "bugs": {
+    "url": "https://github.com/johndstein/anonymous-apex/issues"
+  },
+  "homepage": "https://github.com/johndstein/anonymous-apex#readme",
+  "dependencies": {
+    "ejs": "2.5.9",
+    "jsforce": "1.8.4"
+  }
+}

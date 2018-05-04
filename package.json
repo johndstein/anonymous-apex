@@ -1,6 +1,6 @@
 {
   "name": "anonymous-apex",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Easily run anonymous Salesforce Apex code with Node.js or on the command line.",
   "main": "index.js",
   "bin": {

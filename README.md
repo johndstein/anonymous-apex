@@ -34,7 +34,8 @@ anonymous-apex template-data.json < my-code.apex
 ```
 Usage: anonymous-apex APEX [TEMPLATE_DATA]
 
-  APEX (required) is the path to a file containing your Apex code.
+  APEX (required) is the path to a file containing your Apex code
+    OR just a string of Apex code.
 
   TEMPLATE_DATA (optional) is the path to a file containing
     JSON data to apply to your APEX code template.
@@ -49,6 +50,8 @@ Usage: anonymous-apex APEX [TEMPLATE_DATA]
 
   You can set the NODE_DEBUG environment variable if you want us
   to be chatty (INDLUDING USERNAME and PASSWORD info)!!!
+
+  NODE_DEBUG=ANONYMOUS_APEX anonymous-apex APEX [TEMPLATE_DATA]
 ```
 
 ### Node Module

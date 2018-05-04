@@ -73,6 +73,16 @@ const options = {
 require('anonymous-apex').execute(options, apex, data)
   .then((results) => {
     console.error('\ndone', results);
+    // Results look as follows. You will likely want to make sure that both
+    // compiled and success are true.
+    //
+    // { line: -1,
+    //   column: -1,
+    //   compiled: true,
+    //   success: true,
+    //   compileProblem: null,
+    //   exceptionStackTrace: null,
+    //   exceptionMessage: null }
   })
   .catch((error) => {
     console.error(error);

@@ -5,7 +5,8 @@
 const usage = `
 Usage: anonymous-apex APEX [TEMPLATE_DATA]
 
-  APEX (required) is the path to a file containing your Apex code.
+  APEX (required) is the path to a file containing your Apex code
+    OR just a string of Apex code.
 
   TEMPLATE_DATA (optional) is the path to a file containing
     JSON data to apply to your APEX code template.
@@ -35,7 +36,12 @@ if (!process.argv[2]) {
 }
 
 const fs = require('fs');
-const apex = fs.readFileSync(process.argv[2]).toString();
+let apex = process.argv[2];
+try {
+  apex = fs.readFileSync(process.argv[2]).toString();
+} catch (error) {
+  // noop
+}
 let data = null;
 if (process.argv[3]) {
   data = JSON.parse(fs.readFileSync(process.argv[3]).toString());
